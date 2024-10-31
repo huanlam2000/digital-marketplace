@@ -1,17 +1,13 @@
-"use client";
-
 import Image from "next/image";
-import { useSearchParams } from "next/navigation";
 import VerifyEmail from "@/components/VerifyEmail";
 
-// interface PageProps {
-//   searchParams: { [key: string]: string | string[] | undefined };
-// }
+interface PageProps {
+  searchParams: { [key: string]: string | string[] | undefined };
+}
 
-const VerifyEmailPage = () => {
-  const searchParams = useSearchParams();
-  const token = searchParams.get("token");
-  const toEmail = searchParams.get("to");
+const VerifyEmailPage = ({ searchParams }: PageProps) => {
+  const token = searchParams.token;
+  const toEmail = searchParams.to;
   return (
     <div className='container relative mx-auto flex flex-col items-center justify-center pt-20 lg:px-0'>
       <div className='flex w-full flex-col justify-center space-y-6 sm:w-[350px]'>
