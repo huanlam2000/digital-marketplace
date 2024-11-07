@@ -1,6 +1,7 @@
 
 
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
   images: {
     remotePatterns: [
@@ -12,7 +13,11 @@ const nextConfig = {
       }
     ]
   },
-  experimental: { serverComponentsExternalPackages: ['stripe.ts'] }
-};
+  experimental: { serverComponentsExternalPackages: ['stripe.ts'] },
+  webpack: (config) => {
+    config.externals.push('payload') // treat payload as external module and use require when load it.
+    return config
+  }
+}
 
 export default nextConfig;
