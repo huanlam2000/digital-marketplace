@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import dotenv from "dotenv";
+import nodemailer from "nodemailer";
 import path from "path";
 import payload, { Payload } from "payload";
-import nodemailer from "nodemailer";
-
 import type { InitOptions } from "payload/config";
 
 dotenv.config({
