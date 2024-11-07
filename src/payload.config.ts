@@ -15,6 +15,15 @@ dotenv.config({
   path: path.resolve(__dirname, "../.env"),
 });
 
+const mockProductHooksPath = path.resolve(
+  __dirname,
+  "collections/Products/mocks/beforeCreateProduct.js",
+);
+const fullProductHooksPath = path.resolve(
+  __dirname,
+  "collections/Products/hooks/beforeCreateProduct",
+);
+
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
   collections: [Users, Products, Media, ProductFiles, Orders],
@@ -24,6 +33,19 @@ export default buildConfig({
   admin: {
     user: "users",
     bundler: webpackBundler(),
+    webpack: (config) => {
+      // excluding server code
+      return {
+        ...config,
+        resolve: {
+          ...config.resolve,
+          alias: {
+            ...config.resolve?.alias,
+            [fullProductHooksPath]: mockProductHooksPath,
+          },
+        },
+      };
+    },
     meta: {
       titleSuffix: "- DigitalHippo",
       favicon: "/favicon.ico",
