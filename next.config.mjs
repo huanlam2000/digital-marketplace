@@ -10,6 +10,10 @@ const nextConfig = {
         hostname: 'localhost',
         port: '3000',
         pathname: '**'
+      },
+      {
+        protocol: 'https',
+        hostname: 'digital-marketplace-production-30bc.up.railway.app'
       }
     ]
   },
