@@ -1,13 +1,17 @@
-import React from "react";
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import { cookies } from "next/headers";
 import Link from "next/link";
+import React from "react";
+
+import { getServerSideUser } from "@/lib/payload-utils";
+
+import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+
+import Cart from "./Cart";
 import { Icons } from "./Icons";
 import NavItems from "./NavItems";
-import { buttonVariants } from "./ui/button";
-import Cart from "./Cart";
-import { getServerSideUser } from "@/lib/payload-utils";
-import { cookies } from "next/headers";
 import UserAccountNav from "./UserAccountNav";
+import { buttonVariants } from "./ui/button";
+import { User } from "@/payload-types";
 
 const Navbar = async () => {
   const nextCookies = cookies();
@@ -48,7 +52,7 @@ const Navbar = async () => {
                   )}
 
                   {user ?
-                    <UserAccountNav user={user} />
+                    <UserAccountNav user={user as unknown as User} />
                   : <Link
                       href={"/sign-up"}
                       className={buttonVariants({ variant: "ghost" })}

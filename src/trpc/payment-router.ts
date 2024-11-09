@@ -1,6 +1,6 @@
 import { getPayloadClient } from "../get-payload";
 import { stripe } from "../lib/stripe";
-import { Product } from "../payload-types";
+import { Order, Product } from "../payload-types";
 import { TRPCError } from "@trpc/server";
 import type Stripe from "stripe";
 import { z } from "zod";
@@ -72,5 +72,29 @@ export const paymentRouter = router({
         console.log("Error: ", error);
         return { url: null };
       }
+    }),
+  pollOrderStatus: privateProcedure
+    .input(z.object({ orderId: z.string() }))
+    .query(async ({ input }) => {
+      const { orderId } = input;
+
+      const payload = await getPayloadClient();
+
+      const { docs: orders } = await payload.find({
+        collection: "orders",
+        where: {
+          id: {
+            equals: orderId,
+          },
+        },
+      });
+
+      if (!orderId.length) {
+        throw new TRPCError({ code: "NOT_FOUND" });
+      }
+
+      const [order] = orders as unknown as Order[];
+
+      return { isPaid: order._isPaid };
     }),
 });

@@ -31,7 +31,7 @@ const ProductReel = ({ title, subtitle, href, query }: ProductReelProps) => {
   const products = queryResults?.pages.flatMap((page) => page.items);
   let map: (Product | null)[] = [];
   if (products && products.length) {
-    map = products;
+    map = products as unknown as Product[];
   } else {
     map = new Array<null>(query.limit ?? FALLBACK_LIMIT).fill(null);
   }
