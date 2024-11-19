@@ -1,21 +1,35 @@
 ## Features in this project
+```
+
 
 🛠️ Complete marketplace built in Next.js 14
+
 💻 Beautiful landing page & product pages included
+
 🎨 Custom artwork included
+
 💳 Full admin dashboard with PayloadCMS
+
 🛍️ Users can purchase and sell their own products
+
 🛒 Locally persisted shopping cart
+
 🔑 Authentication with sign- up verification email
+
 🖥️ Self-host Next.js
+
 🌟 Clean, modern UI using shadcn-ui
+
 ✉️ Beautiful emails for signing up and after purchase
+
 ✅ Admins can verify products to ensure high quality
+
 ⌨️ 100% written in TypeScript
 
-#
-#
-#
+
+```
+
+
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
