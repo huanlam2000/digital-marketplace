@@ -34,7 +34,6 @@ const ThankyouPage = async ({ searchParams }: PageProps) => {
   })) as unknown as { docs: Order[] };
 
   const [order] = orders;
-  console.log(orders);
 
   if (!orders) return notFound();
 

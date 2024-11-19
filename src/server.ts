@@ -40,7 +40,7 @@ const start = async () => {
     },
   });
 
-  app.post("api/webhooks/stripe", webhookMiddleware, stripeWebhookHandler);
+  app.post("/api/webhooks/stripe", webhookMiddleware, stripeWebhookHandler);
 
   const cartRouter = express.Router();
 
