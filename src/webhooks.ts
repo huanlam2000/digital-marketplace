@@ -2,7 +2,7 @@ import express, { RequestHandler } from "express";
 import { Resend } from "resend";
 import type { Stripe } from "stripe";
 
-import { ReceiptEmailHtml } from "./components/ReceiptEmail";
+import { ReceiptEmailHtml } from "./components/email/ReceiptEmail";
 import { getPayloadClient } from "./get-payload";
 import { stripe } from "./lib/stripe";
 import { Product, User } from "./payload-types";

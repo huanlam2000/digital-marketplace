@@ -4,7 +4,6 @@ import { BeforeChangeHook } from "payload/dist/collections/config/types";
 import { Product } from "@/payload-types";
 
 export const createStripeProduct: BeforeChangeHook<Product> = async (args) => {
-  console.log("hahaha");
   if (args.operation === "create") {
     const data = args.data as Product;
 
